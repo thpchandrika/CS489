@@ -1,0 +1,28 @@
+1.What is Spring?
+=> Spring is a platform that is used to build an enterprise application that provides
+dependency injection. Spring is the broader platform that includes Spring Boot, Spring Cloud, Spring Security, Spring MVC, and so on.
+
+2.What is Spring Boot?
+=> Spring Boot is built on top of Spring framework that provides autoconfiguratios features so that developer can 
+focus on business logic reducing a lot of boilerplate code. Also, it provides embedded server such as Tomcat and Jetty so that developer
+don't need to focus on configuring separate deployment server.
+
+Q.What is the relation between Spring platform and Spring Boot?
+=> Spring platform and Spring Boot both are used to build enterprise application. The main difference is that
+Spring framework provides dependency injection reducing a lot of configurations and Spring boot provides autoconfigurations features that 
+reduce a lot of boiler plate code. Spring boot provides an embedded server such a tomcat and jetty but in spring platform we need to configure
+separate server for deployment.
+
+Q.What is the relation between Spring platform and Spring framework?
+=>Spring platform not only includes Spring Framework but also Spring boot, Spring Data, Spring Cloud, Spring Security.
+It represents borader spring ecosystem.
+=>Spring framework provides the infrastructure support for developing java applications.Key features of Spring Framework is
+Dependency Injection, Aspect Oriented Programming, Transation management and various other utilities.
+
+Q.What is Dependency Injection and how is it done in the Spring platform/framework?
+=>Dependency Injection is done in spring platform/framework using inversion of control.
+Ioc container manages the creation and configurations of bean.
+In spring, we define the java object as beans typically annotated with @Component, @Controller, @Service, @Repository and so on at class level.We declare the dependencies of one class in another class using annotatio like @Autowired annotation. And the @SpringBootApplication annotation annotated over the main method includes the @ComponentScan annotation, is responsible to identify and inject these beans.
+
+Q.What is Inversion of Control (IoC) and how is it related to Spring?
+=> Inversion of Control is a design principle where the control of object creation is decoupled from main program logic. It follows hollywood principle that is don't call us we'll call you. Spring uses DI to achieve IOC.
