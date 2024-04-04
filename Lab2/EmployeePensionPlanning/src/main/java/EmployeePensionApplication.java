@@ -7,11 +7,6 @@ import java.util.List;
 public class EmployeePensionApplication {
     public static void main(String[] args){
 
-//        1 EX1089 Daniel Agar 105,945.50 2018-01-17 2023-01-17 $100.00
-//        2 Benard Shaw 197,750.00 2019-04-03 null
-//        3 SM2307 Carly Agar 842,000.75 2014-05-16 2019-11-04 $1,555.50
-//        4 Wesley Schneider 74,500.00 2019-05-02
-
         List<Employee> employeeList = new ArrayList<>();
 
         Employee e1 = new Employee(1L, "Daniel", "Agar", LocalDate.of(2018,1, 17),
@@ -39,21 +34,25 @@ public class EmployeePensionApplication {
         employeeList.add(e3);
         employeeList.add(e4);
 
-        System.out.println("[\n");
-
         employeeList.sort(Comparator.comparing(Employee::getLastName).thenComparing(Comparator.comparing(Employee::getYearlySalary).reversed()));
+        showAllEmployees(employeeList);
+        showMonthlyUpcomingEnrolles(employeeList);
+    }
 
-        System.out.println("list of all the Employees");
+    public static void showAllEmployees(List<Employee> employees){
+        System.out.println("List of all the Employees");
         System.out.println("==========================================================================");
-        for (Employee emp : employeeList){
+        System.out.println("[");
+        for (Employee emp : employees){
             System.out.println(emp.toJSONString());
             if (emp.getPensionPlan() != null){
                 System.out.println(emp.getPensionPlan().toJSONString());
             }
         }
+        System.out.println("]");
+    }
 
-        System.out.println("\n]");
-
+    public static void showMonthlyUpcomingEnrolles(List<Employee> employees){
         System.out.println("Monthly Upcoming Enrollees report");
         System.out.println("========================================================================");
 
@@ -61,14 +60,16 @@ public class EmployeePensionApplication {
         LocalDate firstDayOfNextMonth = today.plusMonths(1).withDayOfMonth(1);
         LocalDate lastDayOfNextMonth = firstDayOfNextMonth.plusMonths(1).minusDays(1);
 
-        employeeList.stream()
+        System.out.println("[");
+        employees.stream()
                 .filter(emp -> emp.getPensionPlan() == null
-                                &&  emp.getEmploymentDate().plusYears(5).isBefore(lastDayOfNextMonth)
-                                &&  emp.getEmploymentDate().plusYears(5).isAfter(firstDayOfNextMonth)
+                        &&  emp.getEmploymentDate().plusYears(5).isBefore(lastDayOfNextMonth)
+                        &&  emp.getEmploymentDate().plusYears(5).isAfter(firstDayOfNextMonth)
 
                 )
                 .sorted(Comparator.comparing(Employee::getEmploymentDate))
                 .forEach(emp -> System.out.println(emp.toJSONString()));
+        System.out.println("]");
     }
 
 
