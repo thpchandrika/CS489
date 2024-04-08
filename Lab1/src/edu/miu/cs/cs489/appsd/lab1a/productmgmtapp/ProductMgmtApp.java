@@ -1,6 +1,7 @@
 package edu.miu.cs.cs489.appsd.lab1a.productmgmtapp;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
